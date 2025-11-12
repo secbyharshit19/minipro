@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Resume Analyzer & Builder</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>AI Resume Analyzer & Builder</h1>
+      <p>Create a standout resume and get personalized growth suggestions.</p>
+    </header>
+
+    <main class="app-shell">
+      <section class="panel">
+        <form id="resume-form" autocomplete="off">
+          <h2>Your Details</h2>
+          <div class="grid">
+            <label>
+              Full Name
+              <input type="text" name="name" required placeholder="Jordan Kim" />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" required placeholder="jordan@example.com" />
+            </label>
+            <label>
+              Location
+              <input type="text" name="location" placeholder="Toronto, Canada" />
+            </label>
+            <label>
+              Portfolio / LinkedIn
+              <input type="url" name="portfolio" placeholder="https://linkedin.com/in/jordan" />
+            </label>
+          </div>
+
+          <label>
+            Professional Summary
+            <textarea name="summary" rows="4" placeholder="3-4 sentences summarizing your impact and focus areas."></textarea>
+          </label>
+
+          <label>
+            Career Objective (optional)
+            <textarea name="objective" rows="3" placeholder="Where are you heading next? What problems do you want to solve?"></textarea>
+          </label>
+
+          <label>
+            Core Skills (comma separated)
+            <input type="text" name="skills" placeholder="JavaScript, Node.js, System Design, AWS" />
+          </label>
+
+          <fieldset>
+            <legend>Experience Highlights</legend>
+            <div id="experience-wrapper" class="dynamic-list"></div>
+            <button type="button" class="ghost" id="add-experience">+ Add Experience Bullet</button>
+          </fieldset>
+
+          <fieldset>
+            <legend>Education</legend>
+            <div id="education-wrapper" class="dynamic-list"></div>
+            <button type="button" class="ghost" id="add-education">+ Add Education Item</button>
+          </fieldset>
+
+          <fieldset>
+            <legend>Projects (optional)</legend>
+            <div id="projects-wrapper" class="dynamic-list"></div>
+            <button type="button" class="ghost" id="add-project">+ Add Project</button>
+          </fieldset>
+
+          <button type="submit" class="primary">Analyze & Build Resume</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="results" id="results">
+          <div class="empty-state">
+            <h2>Insights will appear here</h2>
+            <p>Fill in your details and let the AI craft a sharper story.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>Powered by an AI-first resume intelligence engine. Stay curious!</p>
+    </footer>
+
+    <template id="text-entry-template">
+      <label class="dynamic-item">
+        <textarea rows="3"></textarea>
+        <button type="button" class="remove" title="Remove">&times;</button>
+      </label>
+    </template>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
+
