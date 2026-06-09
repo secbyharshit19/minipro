@@ -12,6 +12,22 @@ function gatherText(inputs = []) {
   return inputs.filter(Boolean).join(' ').toLowerCase();
 }
 
+const defaultDomain = {
+  name: 'Professional Excellence',
+  keywords: [],
+  learning: [
+    'Document a complex initiative that showcases collaboration, planning, and measurable outcomes.',
+    'Invest in advanced communication or storytelling workshops to sharpen executive presence.',
+    'Develop a personal operating system for prioritization, delegation, and continuous improvement.'
+  ],
+  differentiators: [
+    'Highlight leadership stories that combine people, process, and impact.',
+    'Add stakeholder testimonials or performance review quotes to build credibility.',
+    'Showcase cross-functional initiatives and how you navigated ambiguity.'
+  ],
+  bonusSkills: ['Stakeholder management', 'Strategic planning', 'Executive communication']
+};
+
 const domainCatalog = [
   {
     name: 'Software Engineering',
@@ -84,7 +100,7 @@ function detectDomain(payload) {
     ...(payload.education || [])
   ]);
 
-  let bestMatch = domainCatalog[0];
+  let bestMatch = defaultDomain;
   let bestScore = 0;
 
   domainCatalog.forEach(domain => {
@@ -97,6 +113,10 @@ function detectDomain(payload) {
       bestMatch = domain;
     }
   });
+
+  if (bestScore === 0) {
+    return { domain: defaultDomain, score: 0 };
+  }
 
   return { domain: bestMatch, score: bestScore };
 }
